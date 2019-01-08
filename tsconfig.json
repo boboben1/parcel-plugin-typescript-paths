@@ -1,6 +1,6 @@
 {
   "compileOnSave": false,
-  "exclude": ["dist", "node_modules", "test", "testprogream"],
+  "exclude": ["dist", "node_modules", "test"],
   "include": ["src/**/*"],
   "compilerOptions": {
     "outDir": "dist",

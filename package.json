@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "description": "This plugin enabled Parcel to automatically use module aliases defined in tsconfig.json's compilerOptions.paths without any additional configuration. ",
   "main": "dist/index.js",
-  "dependencies": {
-    "parcel-bundler": "^1.11.0"
-  },
-  "devDependencies": {
+  "peerDependencies": {
+    "parcel-bundler": "^1.11.0",
     "@types/node": "^10.12.18",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {},
+  "devDependencies": {
     "eslint": "^5.12.0",
     "mocha": "^5.2.0",
     "parcel-assert-bundle-tree": "^1.0.0",
-    "tslint": "^5.12.0",
-    "typescript": "^3.2.2"
+    "tslint": "^5.12.0"
   },
   "scripts": {
     "test": "mocha",
