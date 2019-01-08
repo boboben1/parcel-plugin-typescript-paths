@@ -18,7 +18,8 @@
   "scripts": {
     "test": "mocha",
     "tsc": "tsc",
-    "install": "tsc"
+    "prepublish": "tsc",
+    "postinstall": "tsc"
   },
   "repository": {
     "type": "git",
