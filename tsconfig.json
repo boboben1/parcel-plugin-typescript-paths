@@ -7,18 +7,15 @@
     "baseUrl": "src",
     "sourceMap": false,
     "noImplicitAny": false,
-    "declaration": true,
+    "declaration": false,
     "moduleResolution": "node",
-    "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "downlevelIteration": false,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "target": "es2018",
-    "importHelpers": true,
-    "paths": {
-      "@util": ["util/index"]
-    },
+    "importHelpers": false,
     "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom"]
   }

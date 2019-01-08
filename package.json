@@ -6,9 +6,13 @@
   "dependencies": {
     "parcel-bundler": "^1.11.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "install": "npm run tsc"
   },
   "repository": {
     "type": "git",
