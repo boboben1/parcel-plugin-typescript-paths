@@ -1,0 +1,28 @@
+{
+  "name": "parcel-plugin-typescript-paths",
+  "version": "0.1.0",
+  "description": "This plugin enabled Parcel to automatically use module aliases defined in tsconfig.json's compilerOptions.paths without any additional configuration. ",
+  "main": "dist/index.js",
+  "dependencies": {
+    "parcel-bundler": "^1.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boboben1/parcel-plugin-typescript-paths.git"
+  },
+  "keywords": [
+    "parcel",
+    "typescript",
+    "module-alias"
+  ],
+  "author": "boboben1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boboben1/parcel-plugin-typescript-paths/issues"
+  },
+  "homepage": "https://github.com/boboben1/parcel-plugin-typescript-paths#readme"
+}

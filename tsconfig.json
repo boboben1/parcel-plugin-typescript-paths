@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "exclude": ["dist", "node_modules"],
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "src",
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "declaration": true,
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "target": "es2018",
+    "importHelpers": true,
+    "paths": {
+      "@util": ["util/index"]
+    },
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["esnext", "dom"]
+  }
+}
