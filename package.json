@@ -19,6 +19,7 @@
     "test": "mocha",
     "tsc": "tsc",
     "prepublish": "tsc",
+    "install": "node -e \"console.log(process.cwd())\"",
     "postinstall": "tsc"
   },
   "repository": {
