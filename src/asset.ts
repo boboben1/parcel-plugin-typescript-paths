@@ -55,12 +55,11 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
           includePath.indexOf('/') > 0 ===
             (key.substring(key.length - 1) === '/')
         ) {
-          // console.log(this.name);
           substr = substr.replace(
             includePath,
             this.getRelativeIncludePath(newPaths[key], includePath, key)
           );
-          // console.log(substr);
+
           return substr;
         }
       }
