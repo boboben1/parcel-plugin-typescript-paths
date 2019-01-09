@@ -5,18 +5,18 @@ import * as path from 'path';
 const IMPORT_RE = /\b(?:import.+?|export.+?|require.+?)\(?['"](.*)['"]\)?/g;
 
 class TypeScriptModuledResolveAsset extends TypeScriptAsset {
-  contents: string;
-  dependencies: Map<any, any>;
-  relativeName: string;
-  name: string;
-  options: any;
-  async pretransform() {
+  public contents: string;
+  public dependencies: Map<any, any>;
+  public relativeName: string;
+  public name: string;
+  public options: any;
+  public async pretransform() {
     this.contents = await this.fixImports(this.contents);
 
     return super.pretransform();
   }
 
-  getRelativeIncludePath(newPath: string, includePath: string, key: string) {
+  public getRelativeIncludePath(newPath: string, includePath: string, key: string) {
     const relativePath = path
       .relative(
         path.resolve(this.name, '..'),
@@ -32,8 +32,8 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
     return `./${relativePath}${targetFile}`.replace(/\/{2,}/g, '/');
   }
 
-  async fixImports(code: string) {
-    let tsconfig = await super.getConfig(['tsconfig.json']); // Overwrite default if config is found
+  public async fixImports(code: string) {
+    const tsconfig = await super.getConfig(['tsconfig.json']); // Overwrite default if config is found
 
     const newPaths = {} as { [key: string]: string };
     for (const key in tsconfig.compilerOptions.paths) {
@@ -49,12 +49,12 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
           includePath.indexOf('/') > 0 ===
             (key.substring(key.length - 1) === '/')
         ) {
-          //console.log(this.name);
+          // console.log(this.name);
           substr = substr.replace(
             includePath,
             this.getRelativeIncludePath(newPaths[key], includePath, key)
           );
-          //console.log(substr);
+          // console.log(substr);
           return substr;
         }
       }
