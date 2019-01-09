@@ -16,7 +16,11 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
     return super.pretransform();
   }
 
-  public getRelativeIncludePath(newPath: string, includePath: string, key: string) {
+  public getRelativeIncludePath(
+    newPath: string,
+    includePath: string,
+    key: string
+  ) {
     const relativePath = path
       .relative(
         path.resolve(this.name, '..'),
@@ -35,12 +39,14 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
   public async fixImports(code: string) {
     const tsconfig = await super.getConfig(['tsconfig.json']); // Overwrite default if config is found
 
-    const newPaths = {} as { [key: string]: string };
-    for (const key in tsconfig.compilerOptions.paths) {
-      newPaths[key.replace('/*', '/')] = tsconfig.compilerOptions.paths[
-        key
-      ][0].replace('/*', '');
-    }
+    const paths: { [key: string]: string[] } = tsconfig.compilerOptions.paths;
+
+    const pairs = Object.keys(paths).map((key) => {
+      const newKey = key.replace('/*', '/');
+      return { [newKey]: paths[key][0] };
+    });
+
+    const newPaths: { [key: string]: string } = Object.assign({}, ...pairs);
 
     code = code.replace(IMPORT_RE, (substr: string, includePath: string) => {
       for (const key in newPaths) {

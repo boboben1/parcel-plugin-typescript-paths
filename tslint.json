@@ -1,27 +1,23 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {
-        "no-console": false,
-    },
-    "rules": {
-        "semicolon": false,
-        "trailing-comma": false,
-        "no-console": false,
-        "no-require-imports": false,
-        "quotemark": [true, "single"],
-        "max-classes-per-file": false,
-        "no-empty": false,
-        "only-arrow-functions": false,
-        "object-literal-sort-keys": false,
-        "no-shadowed-variable": false,
-        "triple-equals": false,
-        "member-ordering": false,
-        "indent": [true, 2],
-        "ordered-imports": false,
-        "object-literal-shorthand": false
-    },
-    "rulesDirectory": []
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {
+    "no-console": false
+  },
+  "rules": {
+    "trailing-comma": false,
+    "no-console": false,
+    "no-require-imports": false,
+    "quotemark": [true, "single"],
+    "max-classes-per-file": false,
+    "no-empty": false,
+    "only-arrow-functions": false,
+    "object-literal-sort-keys": false,
+    "no-shadowed-variable": false,
+    "member-ordering": false,
+    "indent": [true, "spaces", 2],
+    "ordered-imports": false,
+    "object-literal-shorthand": false
+  },
+  "rulesDirectory": []
 }
