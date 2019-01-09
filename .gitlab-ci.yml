@@ -16,13 +16,3 @@ test:node:8:
   script:
     - npm run build
     - npm test
-
-publish:
-  stage: deploy
-  only:
-    - tags
-    - triggers
-  script:
-    - npm run build
-    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
-    - npm publish
