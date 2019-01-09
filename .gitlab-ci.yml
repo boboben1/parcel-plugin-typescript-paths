@@ -1,0 +1,28 @@
+image: node:lts
+
+before_script:
+  - npm install
+
+cache:
+  paths:
+    - node_modules/
+
+test:node:lts:
+  script:
+    - npm run build
+    - npm test
+
+test:node:8:
+  script:
+    - npm run build
+    - npm test
+
+publish:
+  stage: deploy
+  only:
+    - tags
+    - triggers
+  script:
+    - npm run build
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - npm publish
