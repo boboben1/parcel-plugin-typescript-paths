@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-typescript-paths",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "This plugin enabled Parcel to automatically use module aliases defined in tsconfig.json's compilerOptions.paths without any additional configuration. ",
   "main": "dist/index.js",
   "peerDependencies": {},
