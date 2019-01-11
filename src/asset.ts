@@ -43,7 +43,7 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
 
     const pairs = Object.keys(paths).map((key) => {
       const newKey = key.replace('/*', '/');
-      return { [newKey]: paths[key][0] };
+      return { [newKey]: paths[key][0].replace('/*', '') };
     });
 
     const newPaths: { [key: string]: string } = Object.assign({}, ...pairs);
