@@ -40,7 +40,9 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
     const tsconfig = await super.getConfig(['tsconfig.json']); // Overwrite default if config is found
 
     const paths: { [key: string]: string[] } = tsconfig.compilerOptions.paths;
-
+    if (typeof paths === 'undefined' || paths === null) {
+      return;
+    }
     const pairs = Object.keys(paths).map((key) => {
       const newKey = key.replace('/*', '/');
       return { [newKey]: paths[key][0].replace('/*', '') };
