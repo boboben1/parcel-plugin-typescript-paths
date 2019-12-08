@@ -2,7 +2,7 @@ import TypeScriptAsset = require('parcel-bundler/src/assets/TypeScriptAsset.js')
 import JSAsset = require('parcel-bundler/src/assets/JSAsset.js');
 import * as path from 'path';
 
-const IMPORT_RE = /\b(?:import.+?|export.+?|require.+?)\(?['"](.*)['"]\)?/g;
+const IMPORT_RE = /\b(?:import(.|\n)+?|export(.|\n)+?|require.+?)\(?['"](.*)['"]\)?/g;
 
 class TypeScriptModuledResolveAsset extends TypeScriptAsset {
   public contents: string;
@@ -50,7 +50,7 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
 
     const newPaths: { [key: string]: string } = Object.assign({}, ...pairs);
 
-    code = code.replace(IMPORT_RE, (substr: string, includePath: string) => {
+    code = code.replace(IMPORT_RE, (substr: string, part1, part2, includePath: string) => {
       for (const key in newPaths) {
         if (
           includePath.startsWith(key) &&
