@@ -26,7 +26,7 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
         path.resolve(this.name, '..'),
         `${this.options.rootDir}/${newPath}`
       )
-      .replace('\\', '/');
+      .replace(/\\/g, '/');
 
     const targetFile =
       includePath.length === key.length
