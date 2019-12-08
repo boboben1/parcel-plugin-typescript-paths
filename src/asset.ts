@@ -1,6 +1,6 @@
-import TypeScriptAsset = require("parcel-bundler/src/assets/TypeScriptAsset.js");
-import JSAsset = require("parcel-bundler/src/assets/JSAsset.js");
-import * as path from "path";
+import TypeScriptAsset = require('parcel-bundler/src/assets/TypeScriptAsset.js');
+import JSAsset = require('parcel-bundler/src/assets/JSAsset.js');
+import * as path from 'path';
 
 const IMPORT_RE = /\b(?:import(?:.|[\n\r])+?|export(?:.|[\n\r])+?|require.+?)\(?['"](.*)['"]\)?/g;
 
@@ -23,29 +23,29 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
   ) {
     const relativePath = path
       .relative(
-        path.resolve(this.name, ".."),
+        path.resolve(this.name, '..'),
         `${this.options.rootDir}/${newPath}`
       )
-      .replace(/\\/g, "/");
+      .replace(/\\/g, '/');
 
     const targetFile =
       includePath.length === key.length
-        ? ""
+        ? ''
         : `/${includePath.substring(key.length)}`;
 
-    return `./${relativePath}${targetFile}`.replace(/\/{2,}/g, "/");
+    return `./${relativePath}${targetFile}`.replace(/\/{2,}/g, '/');
   }
 
   public async fixImports(code: string) {
-    const tsconfig = await super.getConfig(["tsconfig.json"]); // Overwrite default if config is found
+    const tsconfig = await super.getConfig(['tsconfig.json']); // Overwrite default if config is found
 
     const paths: { [key: string]: string[] } = tsconfig.compilerOptions.paths;
-    if (typeof paths === "undefined" || paths === null) {
+    if (typeof paths === 'undefined' || paths === null) {
       return;
     }
-    const pairs = Object.keys(paths).map(key => {
-      const newKey = key.replace("/*", "/");
-      return { [newKey]: paths[key][0].replace("/*", "") };
+    const pairs = Object.keys(paths).map((key) => {
+      const newKey = key.replace('/*', '/');
+      return { [newKey]: paths[key][0].replace('/*', '') };
     });
 
     const newPaths: { [key: string]: string } = Object.assign({}, ...pairs);
@@ -54,8 +54,8 @@ class TypeScriptModuledResolveAsset extends TypeScriptAsset {
       for (const key in newPaths) {
         if (
           includePath.startsWith(key) &&
-          includePath.indexOf("/") > 0 ===
-            (key.substring(key.length - 1) === "/")
+          includePath.indexOf('/') > 0 ===
+            (key.substring(key.length - 1) === '/')
         ) {
           substr = substr.replace(
             includePath,
