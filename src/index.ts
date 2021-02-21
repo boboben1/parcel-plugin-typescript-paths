@@ -1,3 +1,4 @@
-export = function(bundler) {
-  bundler.addAssetType('.ts', require.resolve('./asset.js'));
+export = function (bundler) {
+	const assetTypes = ['.ts', '.tsx'];
+	assetTypes.forEach((_) => bundler.addAssetType(_, require.resolve('./asset.js')));
 };
